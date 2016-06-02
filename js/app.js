@@ -4,6 +4,7 @@ $(document).foundation()
 var megaRoster = {
   init: function() {
     this.setupEventListeners();
+    this.count = 0;
   },
 
   setupEventListeners: function() {
@@ -11,10 +12,13 @@ var megaRoster = {
   },
 
   addStudent: function(ev) {
+    //debugger;
     ev.preventDefault();
     var f = ev.currentTarget;
     var studentName = f.studentName.value;
+    this.count += 1;
     //var studentName = this.studentName.value; this here is #studentForm
+    //console.log(studentName);
     var item = this.buildListItem(studentName);
     var list = document.querySelector('#studentList');
     list.appendChild(item);
