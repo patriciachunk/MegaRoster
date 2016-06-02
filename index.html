@@ -5,37 +5,32 @@
   <title>Megaroster</title>
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Baby's First Javascript</title>
+  <title>MegaRoster</title>
   <link rel="stylesheet" href="css/foundation.css">
   <link rel="stylesheet" href="css/app.css">
-  <h3> MegaRoster </h3>
 </head>
 <body>
-
-    <div class="row">
+  <div class="row" style="background-color: antiquewhite">
+    <div class="medium-8 medium-offset-2 columns" style="background-color: WhiteSmoke">
+      <h3> MegaRoster </h3>
       <form id="studentForm">
-        <p>
-          <label for="name">Name</label>
-          <input type="text" name="studentName" placeholder="Enter the student name" required/>
-        </p>
-        <p>
-          <button type="submit" class="button">Add student</button>
-        </p>
+        <div class="medium-9 columns">
+          <p>
+            <input type="text" name="studentName" placeholder="Enter the student name" required/>
+          </p>
+        </div>
+        <div class="small-3 columns">
+          <button type="submit" class="button expanded">Add student</button>
+        </div>
       </form>
     </div>
-
-
-    <div class="row">
-      <div class="medium-8 medium-offset-2 columns">
-        <ul id="studentList" class="no-bullet">
-
-        </ul>
-      </div>
+  </div>
+  <div class="row">
+    <div class="medium-8 medium-offset-2 columns">
+      <ul id="studentList" class="no-bullet">
+      </ul>
     </div>
-
-
-
-
+  </div>
   <script src="js/vendor/jquery.js"></script>
   <script src="js/vendor/what-input.js"></script>
   <script src="js/vendor/foundation.js"></script>
