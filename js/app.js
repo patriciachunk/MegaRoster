@@ -14,6 +14,7 @@ var megaRoster = {
     ev.preventDefault();
     var f = ev.currentTarget;
     var studentName = f.studentName.value;
+    //var studentName = this.studentName.value; this here is #studentForm
     var item = this.buildListItem(studentName);
     var list = document.querySelector('#studentList');
     list.appendChild(item);
