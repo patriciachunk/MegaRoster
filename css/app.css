@@ -3,6 +3,10 @@ section > div {
   margin: 20px auto;
 }
 
+#studenrForm div {
+  padding: 0;
+}
+
 h3 {
 }
 
