@@ -28,8 +28,18 @@ var megaRoster = {
 
   buildListItem: function(studentName){
     var item = document.createElement('li');
-    var deleteLink = this.buildLink('delete');
-    var promoteLink = this.buildLink('promote');
+    var deleteLink = this.buildLink({
+      text: 'delete',
+      handler: function() {
+        alert('alerttttt');
+      }
+    });
+    var promoteLink = this.buildLink({
+      text: 'promote',
+      handler: function() {
+
+      }
+    });
     item.innerText = studentName;
     item.appendChild(deleteLink);
     item.appendChild(promoteLink);
@@ -37,11 +47,11 @@ var megaRoster = {
     return item;
   },
 
-  buildLink: function(linkText) {
+  buildLink: function(options) {
     var link = document.createElement('a');
     link.href = "#";
-    link.innerText = linkText.text;
-    link.onclick = linkText.handler;
+    link.innerText = options.text;
+    link.onclick = options.handler;
     return link;
   },
 }
