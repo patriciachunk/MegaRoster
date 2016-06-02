@@ -3,8 +3,12 @@ section > div {
   margin: 20px auto;
 }
 
-#studenrForm div {
+#studentForm > div {
   padding: 0;
+}
+
+#studentList a {
+  margin-left: ;
 }
 
 h3 {
