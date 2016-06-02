@@ -31,13 +31,13 @@ var megaRoster = {
     var deleteLink = this.buildLink({
       text: 'delete',
       handler: function() {
-        alert('alerttttt');
+        item.remove();
       }
     });
     var promoteLink = this.buildLink({
       text: 'promote',
       handler: function() {
-
+        item.style.border = '1px CornflowerBlue dashed';
       }
     });
     item.innerText = studentName;
