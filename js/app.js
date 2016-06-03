@@ -3,8 +3,9 @@ $(document).foundation()
 
 var megaRoster = {
   init: function() {
+    this.studentList = document.querySelector('#studentList');
     this.setupEventListeners();
-    //this.count = 0;
+    this.count = 0;
   },
 
   setupEventListeners: function() {
@@ -16,13 +17,8 @@ var megaRoster = {
     ev.preventDefault();
     var f = ev.currentTarget;
     var studentName = f.studentName.value;
-    //this.count += 1;
-    //var studentName = this.studentName.value; this here is #studentForm
-    //console.log(studentName);
     var item = this.buildListItem(studentName);
-    var list = document.querySelector('#studentList');
-    //list.appendChild(item);
-    this.prependChild(studentList, item);
+    this.prependChild(this.studentList, item);
     f.reset();
     f.studentName.focus();
   },
