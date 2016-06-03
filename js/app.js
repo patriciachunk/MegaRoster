@@ -33,23 +33,27 @@ var megaRoster = {
 
   buildListItem: function(studentName){
     var item = document.createElement('li');
+    item.innerText = studentName;
+    this.appendLinks(item);
+
+    return item;
+  },
+
+  appendLinks: function(item) {
     var deleteLink = this.buildLink({
-      text: 'delete',
+      text: ' delete ',
       handler: function() {
         item.remove();
       }
     });
     var promoteLink = this.buildLink({
-      text: 'promote',
+      text: ' promote ',
       handler: function() {
         item.style.border = '1px CornflowerBlue dashed';
       }
     });
-    item.innerText = studentName;
     item.appendChild(deleteLink);
     item.appendChild(promoteLink);
-
-    return item;
   },
 
   buildLink: function(options) {
@@ -59,6 +63,5 @@ var megaRoster = {
     link.onclick = options.handler;
     return link;
   },
-}
-
+};
 megaRoster.init();
