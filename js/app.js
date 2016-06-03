@@ -13,13 +13,13 @@ var megaRoster = {
   },
 
   addStudent: function(ev) {
-    //debugger;
     ev.preventDefault();
     var f = ev.currentTarget;
     var studentName = f.studentName.value;
     var listItem = this.buildListItem(studentName);
     this.prependChild(this.studentList, listItem);
     f.reset();
+    this.count += 1;
     f.studentName.focus();
   },
 
@@ -41,17 +41,34 @@ var megaRoster = {
     var deleteLink = this.buildLink({
       text: ' delete ',
       handler: function() {
-        listItem.remove();
+        listItem.delete();
       }
     });
     var promoteLink = this.buildLink({
       text: ' promote ',
-      handler: function(ev) {
+      handler: function() {
         this.promote(listItem);
-      }
+      }.bind(this)
     });
+
+    var moveUpLink = this.buildLink({
+      text: ' up ',
+      handler: function() {
+        this.moveUp(listItem);
+      }.bind(this)
+    });
+
+    var moveDownLink = this.buildLink({
+      text: ' down ',
+      handler: function() {
+        this.moveDown(listItem);
+      }.bind(this)
+    });
+
     span.appendChild(deleteLink);
     span.appendChild(promoteLink);
+    span.appendChild(moveUpLink);
+    span.appendChild(moveDownLink);
     listItem.appendChild(span);
   },
 
@@ -64,8 +81,17 @@ var megaRoster = {
   },
 
   promote: function(ev) {
-    var listItem = ev.currentTarget.parentNode.parentNode;
     this.prependChild(this.studentList, listItem);
-  }
+  },
+
+  moveUp: function(listItem) {
+    var previousItem = listItem.previousElementSibling;
+    this.studentList.insertBefore(listItem, previousItem);
+  },
+
+  moveDown: function(listItem) {
+    this.moveUp(listItem.nextElementSibling);
+  },
+
 };
 megaRoster.init('#studentList');
