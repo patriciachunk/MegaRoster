@@ -40,6 +40,8 @@ var megaRoster = {
   },
 
   appendLinks: function(item) {
+    var span = document.createElement('span');
+    span.className += 'actions'
     var deleteLink = this.buildLink({
       text: ' delete ',
       handler: function() {
@@ -52,8 +54,9 @@ var megaRoster = {
         item.style.border = '1px CornflowerBlue dashed';
       }
     });
-    item.appendChild(deleteLink);
-    item.appendChild(promoteLink);
+    span.appendChild(deleteLink);
+    span.appendChild(promoteLink);
+    item.appendChild(span);
   },
 
   buildLink: function(options) {
