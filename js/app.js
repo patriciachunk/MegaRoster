@@ -17,8 +17,8 @@ var megaRoster = {
     ev.preventDefault();
     var f = ev.currentTarget;
     var studentName = f.studentName.value;
-    var item = this.buildListItem(studentName);
-    this.prependChild(this.studentList, item);
+    var listItem = this.buildListItem(studentName);
+    this.prependChild(this.studentList, listItem);
     f.reset();
     f.studentName.focus();
   },
@@ -28,31 +28,31 @@ var megaRoster = {
   },
 
   buildListItem: function(studentName){
-    var item = document.createElement('li');
-    item.innerText = studentName;
-    this.appendLinks(item);
+    var listItem = document.createElement('li');
+    listItem.innerText = studentName;
+    this.appendLinks(listItem);
 
-    return item;
+    return listItem;
   },
 
-  appendLinks: function(item) {
+  appendLinks: function(listItem) {
     var span = document.createElement('span');
     span.className += 'actions'
     var deleteLink = this.buildLink({
       text: ' delete ',
       handler: function() {
-        item.remove();
+        listItem.remove();
       }
     });
     var promoteLink = this.buildLink({
       text: ' promote ',
-      handler: function() {
-        item.style.border = '1px CornflowerBlue dashed';
+      handler: function(ev) {
+        this.promote(listItem);
       }
     });
     span.appendChild(deleteLink);
     span.appendChild(promoteLink);
-    item.appendChild(span);
+    listItem.appendChild(span);
   },
 
   buildLink: function(options) {
@@ -62,5 +62,10 @@ var megaRoster = {
     link.onclick = options.handler;
     return link;
   },
+
+  promote: function(ev) {
+    var listItem = ev.currentTarget.parentNode.parentNode;
+    this.prependChild(this.studentList, listItem);
+  }
 };
 megaRoster.init('#studentList');
