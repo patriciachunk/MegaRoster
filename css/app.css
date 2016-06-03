@@ -7,11 +7,18 @@
   margin-left: 1em;
 }
 
+#studentList li:first-child a.moveUp,
+#studentList li:last-child a.moveDown {
+  color: #ddd;
+  cursor: not-allowed;
+  /*pointer-events: none;*/
+}
+
 .button {
   background-color: antiquewhite;
 }
 
 span.actions {
   display: inline-block;
-  float: right; 
+  float: right;
 }
