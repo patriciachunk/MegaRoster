@@ -42,20 +42,21 @@ var megaRoster = {
     var span = document.createElement('span');
     span.className += 'actions'
     var deleteLink = this.buildLink({
-      text: ' delete ',
+      contents: 'delete',
+      className: 'alert button',
       handler: function() {
         listItem.delete();
       }
     });
     var promoteLink = this.buildLink({
-      text: ' promote ',
+      contents: 'promote',
       handler: function() {
         this.promote(listItem);
       }.bind(this)
     });
 
     var moveUpLink = this.buildLink({
-      text: ' up ',
+      contents: '<i class="fa fa-arrow-up"></i>',
       className: 'moveUp',
       handler: function() {
         this.moveUp(listItem);
@@ -63,7 +64,7 @@ var megaRoster = {
     });
 
     var moveDownLink = this.buildLink({
-      text: ' down ',
+      contents: 'down',
       className: 'moveDown',
       handler: function() {
         this.moveDown(listItem);
@@ -71,7 +72,7 @@ var megaRoster = {
     });
 
        span.appendChild(this.buildLink({
-           text: 'edit',
+           contents: 'edit',
            className: 'edit',
            handler: function() {
              this.toggleEditable(listItem.querySelector('span.studentName'));
@@ -88,7 +89,7 @@ var megaRoster = {
   buildLink: function(options) {
     var link = document.createElement('a');
     link.href = "#";
-    link.innerText = options.text;
+    link.innerHTML = options.contents;
     link.onclick = options.handler;
     link.className += (options.className || '');
     return link;
